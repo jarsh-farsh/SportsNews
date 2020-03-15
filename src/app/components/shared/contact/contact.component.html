@@ -1,0 +1,89 @@
+
+<div @openCloseWindow *ngIf="isOpen" 
+     (@openCloseWindow.done)="windowClosed($event)"
+     class="contact-container">
+
+    <div class="dialog-close">
+        <button class="button dialog-close-btn base-transition" 
+                title="Close Window"
+                (click)="close()">X</button>
+    </div>
+
+    <div class="heading h-1">Contact Us</div>
+
+    <div class="contact">
+        <form [formGroup]="contactForm">
+
+            <div class="input">
+
+                <!-- Email input -->
+                <input appInput type="text" formControlName="email" 
+                    (onValueChanged)="emailFocus = $event" 
+                    [ngClass]="{'invalid-input': !contactForm.get('email').valid && contactForm.get('email').touched}">
+                <label [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': contactForm.get('email').value !== '' || emailFocus }">Email</label>
+
+                <!-- Email validation messages -->
+                <div class="validation-messages">
+                    <div *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">
+                        <div *ngIf="contactForm.get('email').errors.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="contactForm.get('email').errors.pattern">
+                            Email address is not correct a correct format.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="input">
+            
+                <!-- Subject input -->
+                <input appInput type="text" formControlName="subject" 
+                       (onValueChanged)="subjectFocus = $event"
+                       [ngClass]="{'invalid-input': !contactForm.get('subject').valid && contactForm.get('subject').touched}">
+                <label
+                    [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': contactForm.get('subject').value !== '' || subjectFocus }">Subject</label>
+            
+                <!-- Subject validation messages -->
+                <div class="validation-messages">
+                    <div *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">
+                        <div *ngIf="contactForm.get('subject').errors.required">
+                            Subject is required
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="input">
+            
+                <!-- Message Input -->
+                <textarea appInput formControlName="message" rows="6" 
+                          (onValueChanged)="messageFocus = $event"
+                          [ngClass]="{'invalid-input': !contactForm.get('message').valid && contactForm.get('message').touched}"></textarea>
+                <label
+                    [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': contactForm.get('message').value !== '' || messageFocus }">Input
+                    your message</label>
+            
+                <!-- Subject validation messages -->
+                <div class="validation-messages">
+                    <div *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched">
+                        <div *ngIf="contactForm.get('message').errors.required">
+                            Message is required
+                        </div>
+                        <div *ngIf="contactForm.get('message').errors.minlength">
+                            Message needs to be longer then 3 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <button class="button button-standard base-transition float-right"
+                [disabled]="!contactForm.valid"
+                [title]="contactForm.valid ? 'Send Your Message' : 'Fill out the form'"
+                (click)="submitMessage()">Submit</button>
+    </div>
+
+</div>

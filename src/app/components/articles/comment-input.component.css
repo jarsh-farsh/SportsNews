@@ -1,0 +1,20 @@
+.input{
+    justify-content: space-between;
+    max-width: 700px;
+    margin:25px auto;
+}
+
+.input textarea{
+    width:100%;
+    outline:none;
+    border:none;
+    border-bottom:1px solid gainsboro;
+    margin:5px 0;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.input-buttons{
+    display:flex;
+    justify-content: flex-end;
+}

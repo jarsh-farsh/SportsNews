@@ -1,0 +1,35 @@
+
+.comment{
+    padding:10px;
+    margin:5px 0;
+    font-family: 'IBM Plex Sans', cursive !important;
+}
+.comment-feedback{
+    display:flex;
+}
+.comment-feedback button{
+    width:auto;
+    min-width: 50px;
+    outline:none;
+    text-align: left;
+    padding:2px;
+}
+.comment-feedback-like .selected{
+    color: deepskyblue;
+}
+.comment-feedback-dislike .selected{
+    color: deepskyblue;
+}
+.comment-heading{
+
+}
+.comment-body{
+    padding:10px;
+}
+.comments-show-more{
+    text-align: center;
+    margin-top:40px;
+}
+.reply{
+    font-family: 'Lalezar', cursive !important;
+}

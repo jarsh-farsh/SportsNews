@@ -1,1 +1,351 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lalezar&display=swap');
+
+/* Global */
+
+html, body{
+    font-family: 'Lalezar', cursive !important;
+    letter-spacing: 1px;
+}
+
+button{
+    border:none;
+    background:none;
+    padding:0;
+    margin:0;
+    outline:none;
+}
+
+.base-color{
+    background: deepskyblue;
+}
+
+.secondary-color{
+    background: orange;
+}
+
+.page-container{
+    width:100%;
+}
+
+.page-section{
+    max-width: 1000px;
+    margin:50px auto;
+}
+
+.box-shadow{
+    box-shadow:2px 2px 4px 1px rgba(0, 0, 0, .2);
+}
+
+.base-transition{
+    transition: all .15s ease-in-out;
+    -webkit-transition: all .15s ease-in-out;
+}
+
+.standard-link{
+    display:block;
+    margin:50px auto;
+    color:white;
+    background:black;
+    border: 2px solid white;
+    padding:15px 50px;
+    width:250px;
+    text-align: center;
+    text-decoration: none;
+}
+.standard-link:hover{
+    background:white;
+    color:black;
+    border: 2px solid black;
+}
+.standard-link:active{
+    background:gray;
+}
+.standard-link:disabled{
+    background:gray;
+    color:gainsboro;
+}
+.standard-link:hover:disabled{
+    border:2px solid white;
+    color:gainsboro;
+}
+
+.button{
+    padding:10px 15px;
+    margin:5px;
+    border-radius: 5px;
+}
+.button:focus{
+    outline: none;
+}
+.button:disabled{
+    background:gainsboro;
+    color:white;
+}
+
+.button-standard{
+    background: black;
+    color: white;
+}
+.button-standard:hover{
+    background:white;
+    color:black;
+}
+.button-standard:hover:disabled{
+    background:gainsboro;
+    color:white;
+}
+
+.button-red{
+    background:red;
+    color:white;
+}
+.button-red:hover{
+    background:white;
+    color:red;
+}
+.button-red:hover:disabled{
+    background:gainsboro;
+    color:white;
+}
+
+.button-sm{
+    font-size:18px;
+    padding:3px 7px 0 7px;
+    margin-top:-12px;
+}
+
+.input{
+    position: relative;
+}
+
+input[type=text],[type=password] {
+    width:100%;
+    padding:15px 15px 8px 15px;
+    border:none;
+    border-radius: 25px;
+    box-shadow:1px 1px 4px 2px rgba(0, 0, 0, .2);
+}
+input[type=text]:focus,
+     [type=password]:focus{
+    outline:none;
+    box-shadow:1px 1px 8px 4px rgba(0, 0, 0, 0.3);
+}
+
+.input-label{
+    position: absolute;
+    background:white;
+    padding:0 2px;
+    color:gray;
+    top:13px;
+    left:16px;
+    pointer-events: none;
+}
+
+.text-written{
+    top:-10px;
+    left:10px;
+}
+
+textarea{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius: 25px;
+    box-shadow:1px 1px 4px 2px rgba(0, 0, 0, .2);
+    resize: none !important;
+}
+textarea:focus{
+    outline:none;
+    box-shadow:1px 1px 8px 4px rgba(0, 0, 0, 0.3);
+}
+
+.invalid-input{
+    box-shadow: 0px 0px 6px 2px rgba(255, 0, 0, 0.6) !important;
+}
+
+.input-label .invalid-input{
+    color:red;
+}
+
+.validation-messages{
+    height:40px;
+    color:red;
+    padding:10px;
+}
+
+/* Covers screen when side menu or popup is active */
+
+.overlay{
+    background: #000000;
+    position: fixed;
+    height:100%;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity: 0.3;
+    z-index: 45;
+}
+
+/* Ad spaces */
+
+.horizontal-ad-space{
+    width: 970px;
+    height: 90px;
+    background-color: gainsboro;
+    margin:40px auto;
+}
+
+@media only screen and (max-width: 1000px){
+    .horizontal-ad-space{
+        width:747.5px;
+        height:90px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .horizontal-ad-space{
+        width:455px;
+        height:72.5px;
+    }
+}
+
+/* Menu Toggle */
+
+.menu-toggle{
+    height:44px;
+    width:44px;
+    margin: 5px 20px 0 15px;
+    border:2px solid transparent;
+    border-radius:25px;
+    background:none;
+    outline:none;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+}
+
+.menu-toggle:focus{
+    outline: none;
+}
+
+.menu-toggle i{
+    font-size:24px;
+}
+
+.circle-background{
+    position: absolute;
+    top:8px;
+    left:20px;
+    height:44px;
+    width:44px;
+}
+
+.circle-background:active{
+    border: 1px solid rgba(219, 219, 219, 0.4);
+    border-radius: 50%;
+    background-color: rgba(219, 219, 219, 0.4);
+}
+
+/* Dialog */
+
+.dialog-close{
+    position: absolute;
+    top:0;
+    right:0;
+}
+.dialog-close-btn{
+    background:gainsboro;
+    padding-bottom:7px;
+}
+.dialog-close-btn:hover{
+    box-shadow: 0 0 0 2px rgba(0,0,0,.3);
+}
+.dialog-close-btn:active{
+    background:gray;
+}
+
+/* Forms */
+
+.form-container{
+    max-width: 900px; 
+    margin:auto; 
+}
+
+.form{
+    padding:100px 25px 80px 25px
+}
+
+/* Headings */
+
+.heading{
+    border-left:4px solid deepskyblue;
+    padding-left:10px;
+}
+
+.brand{
+    font-family: 'IBM Plex Sans', cursive !important;
+    font-weight: bold;
+    margin-left:5px;
+    font-size: 32px;
+    color:white;
+    text-decoration: none;
+}
+
+.brand:hover{
+    text-decoration: none;
+    color:gainsboro;
+}
+
+.h-1{
+    font-size:40px;
+}
+
+.h-2{
+    font-size:32px;
+}
+
+.h-3{
+    font-size:26px;
+}
+
+.h-4{
+    font-size:20px;
+}
+
+/* Pages */
+
+.page-container{
+    width:100%;
+    padding:50px 15px;
+}
+
+.page{
+    width:100%;
+    max-width: 1200px;
+    margin:auto;
+}
+
+.page-heading-container{
+    position: relative;
+    width:100%;
+    border-bottom:3px solid gainsboro;
+    margin:30px 0;
+}
+.page-heading{
+    display:inline-block;
+    position: absolute;
+    bottom:-8px;
+    padding:10px 20px 0 10px;
+    border-bottom: 2px solid gray;
+}
+
+/* Bootstrap override */
+
+.btn:focus{
+    outline:none !important;
+}
+.btn:active{
+    outline:none;
+}

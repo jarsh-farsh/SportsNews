@@ -1,0 +1,64 @@
+<div class="page-container">
+
+    <div class="page">
+        <div class="page-heading-container">
+            <h1 class="page-heading h-1">Articles</h1>
+        </div>
+       
+        <div *ngIf="articles" class="articles-page">
+            
+            <a [routerLink]="['/articles/a/', articles[0].id]" class="featured-article-container">
+
+                <div class="featured-article-image">
+                    <img [src]="articles[0].images[0]">
+                </div>
+
+                <div class="featured-article-caption-container">
+                    <div class="featured-article-type">
+                        {{articles[0].type}}
+                    </div>
+                    <div class="featured-article-title">
+                        {{articles[0].title}}
+                    </div>
+                    <div class="featured-article-author">
+                        By <a href="##">{{articles[0].user.firstName}} {{articles[0].user.lastName}}</a>
+                    </div>
+                </div>
+
+            </a>
+
+            <app-search></app-search>
+
+            <div class="normal-articles">
+                <div *ngFor="let article of articles.slice(1, articles.length)">
+
+                    <a [routerLink]="['/articles/a/', article.id]" class="normal-article-container">
+
+                        <div class="normal-article-image">
+                            <img [src]="article.images[0]">
+                        </div>
+        
+                        <div class="normal-article-caption-container">
+                            <div class="normal-article-type">
+                                {{article.type}}
+                            </div>
+                            <div class="normal-article-title">
+                                {{article.title}}
+                            </div>
+                            <div class="normal-article-author">
+                                By <a href="##">{{article.user.firstName}} {{article.user.lastName}}</a>
+                            </div>
+                        </div>
+        
+                    </a>
+
+                </div>
+            </div>
+
+            <div>
+                <button class="standard-link base-transition">See More</button>
+            </div>
+        </div>
+    </div>
+
+</div>

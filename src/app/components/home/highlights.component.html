@@ -1,0 +1,29 @@
+
+<div class="highlights-container">
+    <h1 class="highlights-heading h-1">Highlight Reel</h1>
+    <div class="highlights-section">
+        <div *ngFor="let video of videos">
+            <div class="video-container">
+                <a [routerLink]="['/highlights']" [queryParams]="{ v: video.snippet.resourceId.videoId }" class="highlight base-transition">
+                    <div class="highlight-image">
+                        <img [src]="video.snippet.thumbnails.medium.url">
+                    </div>
+                    <div class="highlight-details">
+                        <h1 class="highlight-details-heading heading base-transition">{{video.snippet.title}}</h1>
+
+                    </div>
+                </a>
+                <div class="highlight-details-caption">
+                    <div class="highlight-details-origin">
+                        <a href="https://www.youtube.com/channel/{{video.snippet.channelId}}/videos" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a [routerLink]="['/highlights']" class="standard-link base-transition" href="#">See more</a>
+
+    </div>   
+</div>

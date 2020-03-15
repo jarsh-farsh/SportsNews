@@ -1,0 +1,150 @@
+.nav-side-container{
+    position: fixed;
+    background:white;
+    top:0;
+    left:0;
+    width:300px;
+    height:100%;
+    z-index: 50;
+}
+
+.nav-side{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.nav-side-heading{
+    border-bottom:2px solid rgb(230, 230, 230);
+    padding: 5px 0 5px 5px;
+}
+
+.brand{
+    color:black;
+    cursor:pointer;
+}
+.brand:hover{
+    color:gainsboro;
+}
+
+.nav-side-menu{
+    overflow-y:scroll;
+    height:100%;
+}
+
+.nav-side-link{
+    display:flex;
+    align-items: center;
+    font-size:16px;
+    width:100%;
+    padding:15px 30px;
+    text-decoration: none;
+    color:black;
+}
+.nav-side-icon{
+    font-size:22px !important;
+    width:50px;
+
+}
+.drop-down-icon{
+    font-size:20px;
+    margin-right:13px;
+    padding-right: 0;
+    color:black;
+    transform: rotate(270deg);
+}
+.active .drop-down-icon{
+    transform: rotate(360deg) !important;
+    color:white;
+}
+.nav-side-link span{
+    margin-bottom:-5px;
+}
+
+.active-link{
+    color: deepskyblue;
+    background-color: gray;
+}
+.active-link:hover{
+    background-color: gray !important;
+}
+
+.nav-side-link:hover{
+    background-color:gainsboro;
+    cursor: pointer;
+}
+
+.nav-side-menu-dropdown-link {
+    letter-spacing: inherit;
+    outline:none;
+}
+
+.dropdown-nav{
+    border-top:1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+
+.active{
+    background:gray;
+    color:white;
+}
+
+.social-media{
+    display:flex;
+    flex-direction: column;
+    bottom:0;
+    left:0;
+    height:150px;
+    width:100%;
+    border-top:1px solid gainsboro; 
+    background:gainsboro;
+}
+.social-media-heading{
+    padding-top:5px;  
+}
+.social-media-links{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:50%;
+    text-align: center;
+}
+
+.social-media-links i{
+    margin:10px;
+}
+.social-media-links a{
+    width:45px;
+    height:45px;
+    border-radius: 50%;
+    color:black;
+    margin:10px;
+    background:gainsboro;
+}
+.social-media-links a:hover{
+    color:deepskyblue;
+    background:white;
+    box-shadow: 0 0 4px 3px rgba(0,0,0,0.2);
+}
+.link{
+    font-size:22px;
+    margin-top:11px;
+    margin-left:2px
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    display: fixed;
+    width:8px;
+}
+::-webkit-scrollbar-thumb{
+    background: lightgrey;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: gray;
+}
+
+.fas{
+    font-size:30px !important;
+}

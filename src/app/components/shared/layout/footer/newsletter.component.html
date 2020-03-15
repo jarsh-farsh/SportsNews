@@ -1,0 +1,18 @@
+
+<!-- Newsletter sign-up -->
+<div class="newsletter-container">
+    <div class="newsletter">
+        <div class="newsletter-text-section">
+            <h1 class="newsletter-heading heading h-1">Stay up to date! <i class="fa fa-envelope-open"></i></h1>
+            <div class="newsletter-text">Looking to stay informed and up to date on whatever we do? <br> Sign up for our news letter here!</div>
+        </div>
+        <div class="newsletter-button">
+            <button (click)="toggleNewsletterDialog()">Sign up!</button>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter dialog -->
+<div *ngIf="showNewsletterWindow">
+    <app-newsletter-popup (onClose)="toggleNewsletterDialog()"></app-newsletter-popup>
+</div>

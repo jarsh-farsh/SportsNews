@@ -1,0 +1,106 @@
+
+<div class="page-container">
+
+    <div class="page">
+
+        <div class="page-heading-container">
+            <h1 class="page-heading h-1">Login In</h1>
+        </div>
+
+        <div class="page-section">
+
+            <div class="form-container box-shadow">
+
+                <div *ngIf="!isLoggedIn">
+
+                    <div id="validation" class="text-center p-5 validation-messages">
+                        <p>{{errorMessage}}</p>
+                    </div>
+
+                    <form class="form" [formGroup]="loginForm">
+                    
+                        <!-- Email -->
+                        <div class="input">
+                    
+                            <!-- Email input -->
+                            <input appInput type="text" formControlName="email" (onValueChanged)="usernameFocus = $event"
+                                [ngClass]="{'invalid-input': !loginForm.get('email').valid && loginForm.get('email').touched}">
+                            <label
+                                [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': loginForm.get('email').value !== '' || usernameFocus }">
+                                Email
+                            </label>
+                    
+                            <!-- Email validation messages -->
+                            <div class="validation-messages">
+                                <div *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+                                    <div *ngIf="loginForm.get('email').errors.required">
+                                        Email is required
+                                    </div>
+                                    <div *ngIf="loginForm.get('email').errors.pattern">
+                                        Needs to be a valid email address
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="input">
+
+                            <!-- Password input -->
+                            <input appInput type="password" formControlName="password" (onValueChanged)="passwordFocus = $event"
+                                [ngClass]="{'invalid-input': !loginForm.get('password').valid && loginForm.get('password').touched}">
+                            <label
+                                [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': loginForm.get('password').value !== '' || passwordFocus }">Password</label>
+                    
+                            <!-- Password validation messages -->
+                            <div class="validation-messages">
+                                <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                                    <div *ngIf="loginForm.get('password').errors.required">
+                                        Password is required
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        </div>
+
+                        <div class="text-center">
+                            <button class="button button-standard base-transition" 
+                                    style="width:250px"
+                                    [disabled]="!loginForm.valid"
+                                    [title]="loginForm.valid ? 'Log in' : 'Fill out the form'"
+                                    (click)="login()">Log In</button>
+                        </div>
+
+                    </form>
+                
+                    <div class="text-center p-4">
+                        <a class="p-2" [routerLink]="['/forgotpassword']">Forgot your password?</a>
+                        <p class="p-2">Not a member? <a [routerLink]="['/signup']">Sign Up</a></p>
+                    </div>
+
+                </div>
+
+                <div *ngIf="isLoggedIn">
+
+                    <div class="d-flex justify-content-center align-items-center" style="min-height: 400px; flex-direction: column;">
+                        <h3>Would you like to log out?</h3>
+                        <div style="flex-direction: row">
+                            <button class="button button-standard"
+                                    (click)="logout()">
+                                Log out
+                            </button>
+                            <button class="button button-standard"
+                                    (click)="navToHome()">
+                                Back
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,187 @@
+
+<div class="page-container">
+
+    <div class="page">
+
+        <div class="page-heading-container">
+            <h1 class="page-heading h-1">Sign up</h1>
+        </div>
+
+        <div class="box-shadow form-container">
+
+            <form class="form" [formGroup]="signupForm">
+
+                <!-- First Name -->
+                <div class="input">
+
+                    <!-- First Name input -->
+                    <input appInput type="text" formControlName="firstName" (onValueChanged)="firstNameFocus = $event"
+                    [ngClass]="{'invalid-input': !signupForm.get('firstName').valid && signupForm.get('firstName').touched}">
+                    <label
+                        [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('firstName').value !== '' || firstNameFocus }">
+                        First Name
+                    </label>
+            
+                    <!-- First Name validation messages -->
+                    <div class="validation-messages">
+                        <div *ngIf="!signupForm.get('firstName').valid && signupForm.get('firstName').touched">
+                            <div *ngIf="signupForm.get('firstName').errors.required">
+                                First name is required
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Last Name -->
+                <div class="input">
+                
+                    <!-- Last Name input -->
+                    <input appInput type="text" formControlName="lastName" (onValueChanged)="lastNameFocus = $event"
+                        [ngClass]="{'invalid-input': !signupForm.get('lastName').valid && signupForm.get('lastName').touched}">
+                    <label
+                        [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('lastName').value !== '' || lastNameFocus }">
+                        Last Name
+                    </label>
+                
+                    <!-- Last Name validation messages -->
+                    <div class="validation-messages">
+                        <div *ngIf="!signupForm.get('lastName').valid && signupForm.get('lastName').touched">
+                            <div *ngIf="signupForm.get('lastName').errors.required">
+                                Last Name is required
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <!-- Email and Confirmation -->
+                <div formGroupName="emailGroup">
+                
+                    <!-- Email -->
+                    <div class="input">
+                
+                        <!-- Email input -->
+                        <input appInput type="text" formControlName="email" (onValueChanged)="emailFocus = $event"
+                            [ngClass]="{'invalid-input': (!signupForm.get('emailGroup').get('email').valid && signupForm.get('emailGroup').get('email').touched) || signupForm.get('emailGroup').errors?.match }">
+                        <label
+                            [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('emailGroup').get('email').value !== '' || emailFocus }">
+                            Email
+                        </label>
+                
+                        <!-- Email validation messages -->
+                        <div class="validation-messages">
+                            <div
+                                *ngIf="!signupForm.get('emailGroup').get('email').valid && signupForm.get('emailGroup').get('email').touched">
+                                <div *ngIf="signupForm.get('emailGroup').get('email').errors.required">
+                                    Email is required
+                                </div>
+                                <div *ngIf="signupForm.get('emailGroup').get('email').errors.pattern">
+                                    Needs to be a valid email address
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                    <!-- Email Confirm -->
+                    <div class="input">
+                
+                        <!-- Email Confirm input -->
+                        <input appInput type="text" formControlName="emailConfirm" (onValueChanged)="emailConfirmFocus = $event"
+                            [ngClass]="{'invalid-input': (!signupForm.get('emailGroup').get('emailConfirm').valid && signupForm.get('emailGroup').get('emailConfirm').touched) || signupForm.get('emailGroup').errors?.match }">
+                        <label
+                            [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('emailGroup').get('emailConfirm').value !== '' || emailConfirmFocus }">
+                            Email Confirmation
+                        </label>
+                
+                        <!-- Email validation messages -->
+                        <div class="validation-messages">
+                            <div
+                                *ngIf="!signupForm.get('emailGroup').get('emailConfirm').valid && signupForm.get('emailGroup').get('emailConfirm').touched">
+                                <div *ngIf="signupForm.get('emailGroup').get('emailConfirm').errors.required && !signupForm.get('emailGroup').errors?.match">
+                                    Email is required
+                                </div>                       
+                            </div> 
+                            <div *ngIf="signupForm.get('emailGroup').errors?.match">
+                                Emails need to match
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                </div>
+                
+                <!-- Password and Confirmation -->
+                <div formGroupName="passwordGroup">
+                
+                    <!-- Password -->
+                    <div class="input">
+                
+                        <!-- Password Input -->
+                        <input appInput type="text" formControlName="password" (onValueChanged)="passwordFocus = $event"
+                            [ngClass]="{'invalid-input': (!signupForm.get('passwordGroup').get('password').valid && signupForm.get('passwordGroup').get('password').touched) || signupForm.get('passwordGroup').errors?.match }">
+                        <label
+                            [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('passwordGroup').get('password').value !== '' || passwordFocus }">
+                            Password
+                        </label>
+                
+                        <!-- Password validation messages -->
+                        <div class="validation-messages">
+                            <div *ngIf="!signupForm.get('passwordGroup').get('password').valid && signupForm.get('passwordGroup').get('password').touched">
+                                <div *ngIf="signupForm.get('passwordGroup').get('password').errors.required">
+                                    Password is required
+                                </div>
+                                <div *ngIf="signupForm.get('passwordGroup').get('password').errors.minlength">
+                                    Password needs to be at least 7 characters
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                    <!-- Password Confirmation -->
+                    <div class="input">
+                
+                        <!-- Password confirmation Input -->
+                        <input appInput type="text" formControlName="passwordConfirm" (onValueChanged)="passwordConfirmFocus = $event"
+                            [ngClass]="{'invalid-input': (!signupForm.get('passwordGroup').get('passwordConfirm').valid && 
+                                        signupForm.get('passwordGroup').get('passwordConfirm').touched) || 
+                                        signupForm.get('passwordGroup').errors?.match }">
+                        <label
+                            [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': signupForm.get('passwordGroup').get('passwordConfirm').value !== '' || passwordConfirmFocus }">
+                            Password Confirmation
+                        </label>
+                
+                        <!-- Password confirmation validation messages -->
+                        <div class="validation-messages">
+                            <div
+                                *ngIf="!signupForm.get('passwordGroup').get('passwordConfirm').valid && signupForm.get('passwordGroup').get('passwordConfirm').touched">
+                                <div *ngIf="signupForm.get('passwordGroup').get('passwordConfirm').errors.required &&
+                                            !signupForm.get('passwordGroup').errors?.match">
+                                    Password is required
+                                </div>
+                            </div>
+                            <div *ngIf="signupForm.get('passwordGroup').errors?.match">
+                                Passwords need to match
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                </div>
+
+                <div class="text-center p-3">
+                    <button class="button button-standard base-transition" 
+                            style="width:250px"
+                            [disabled]="!signupForm.valid">
+                            Sign Up
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,69 @@
+<div @openCloseSideNav *ngIf="isOpen" (@openCloseSideNav.done)="closeSideNav($event)" class="nav-side-container">
+
+    <!-- Side Navigation Menu -->
+    <div class="nav-side box-shadow">
+
+        <!-- Side Nav Heading -->
+        <div class="nav-side-heading d-flex">
+            <button class="menu-toggle" (click)=toggleClose()>
+                <i class="fa fa-bars" style="font-size:22px"></i>
+                <div class="circle-background base-transition"></div>
+            </button>
+            <a [routerLink]="['']" class="brand">Brand</a>
+        </div>
+
+        <!-- Side Nav Links -->
+        <div class="nav-side-menu">
+
+            <a [routerLink]="['articles']"
+                [ngClass]="{'nav-side-link': true, 'active-link': checkActiveLink('articles') }">
+                <i class="nav-side-icon fa fa-file"></i>
+                <span>Articles</span>
+            </a>
+
+            <a [routerLink]="['highlights']"
+                [ngClass]="{'nav-side-link': true, 'active-link': checkActiveLink('highlights') }">
+                <i class="nav-side-icon fa fa-play-circle"></i>
+                <span>Highlights</span>
+            </a>
+
+
+            <button [ngClass]="{'nav-side-link':true, 'nav-side-menu-dropdown-link':true, 'active': dropDownLinks[0].isOpen }"
+                (click)="toggleDropDown(dropDownLinks[0])" [disabled]="dropDownLinks[0].isAnimating">
+                <i [ngClass]="{'drop-down-icon':true, 'fa fa-sort-down':true, 'base-transition':true }"></i>
+                <span>Want To Play?</span>
+            </button>
+
+            <div *ngIf="dropDownLinks[0].isOpen" @openCloseSideNav class="dropdown-nav">
+
+                    <a [routerLink]="[dropDownLinks[0].links[0]]" [ngClass]="{'nav-side-link': true, 'active-link': checkActiveLink(dropDownLinks[0].linkNames[0]) }">
+                        <i class="nav-side-icon {{dropDownLinks[0].linkIcon[0]}}"></i>
+                        <span>{{dropDownLinks[0].linkNames[0] | titlecase}}</span>
+                    </a>                    
+                    <a [routerLink]="[dropDownLinks[0].links[2]]" [ngClass]="{'nav-side-link': true, 'active-link': checkActiveLink(dropDownLinks[0].linkNames[2]) }">
+                        <i class="nav-side-icon fas fa-ad fa-3x"></i>
+                        <span>{{dropDownLinks[0].linkNames[2] | titlecase}}</span>
+                    </a>
+                    <a href="https://play.dodgeballer.com/" target="_blank" [ngClass]="{'nav-side-link': true, 'active-link': checkActiveLink(dropDownLinks[0].linkNames[1]) }">
+                        <i class="nav-side-icon {{dropDownLinks[0].linkIcon[1]}}"></i>
+                        <span>{{dropDownLinks[0].linkNames[1] | titlecase}}</span>
+                    </a>
+
+
+            </div>
+
+
+        </div>
+
+        <!-- Social Media -->
+        <div class="social-media">
+            <h1 class="social-media-heading h-2 text-center">Follow us</h1>
+            <div class="social-media-links">
+                <a href="#" class="base-transition"><i class="link fab fa-facebook"></i></a>
+                <a href="#" class="base-transition"><i class="link fab fa-twitter"></i></a>
+                <a href="#" class="base-transition"><i class="link fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>

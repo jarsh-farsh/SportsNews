@@ -1,0 +1,36 @@
+
+<div class="input"
+     @commentInputAppear>
+
+    <div>
+        
+        <form [formGroup]="commentForm">
+
+            <!-- Message Input -->
+            <textarea appInput appTextarea [textInput]="commentForm.get('comment').value" formControlName="comment" rows="1" 
+                (onValueChanged)="commentFocus = $event">
+            </textarea>
+
+            <label [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': commentForm.get('comment').value !== '' || commentFocus }">
+                Add a comment...
+            </label>
+
+        </form>
+
+        <div class="input-buttons">
+
+            <button *ngIf="isReply" 
+                    class="button button-red base-transition"
+                    (click)="cancelReply.emit('true')">Cancel</button>
+
+            <button class="button button-red base-transition"
+                    [disabled]="commentForm.get('comment').value === ''"
+                    (click)="clearCommentBody()">Clear</button>
+            <button class="button button-standard base-transition"
+                    [disabled]="commentForm.get('comment').errors || isWhiteSpace(commentForm.get('comment').value)"
+                    (click)="submitComment()">Comment</button>
+
+        </div>
+    </div>
+
+</div>

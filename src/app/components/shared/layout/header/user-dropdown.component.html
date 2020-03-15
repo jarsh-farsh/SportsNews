@@ -1,0 +1,40 @@
+
+<div [@.disabled]="animationDisabled">
+
+    <div @slideAppear *ngIf="isOpen"
+        (@slideAppear.done)="closeUser($event)" 
+        class="user-dropdown-container">
+
+        <!-- Dropdown container arrow -->
+        <div class="user-dropdown-arrow"></div>
+
+        <!-- Dropdown container -->
+        <div class="user-dropdown text-center">
+            <div class="user-dropdown-content">
+                <div class="user-dropdown-heading-container">
+                    <h5 class="user-dropdown-header">User</h5>
+                </div>
+
+                <div *ngIf="!isLoggedIn">
+                    <div class="user-dropdown-text">
+                        <a [routerLink]="['login']">
+                            Login</a> or <a [routerLink]="['signup']">Sign up</a>
+                    </div>
+                </div>
+
+                <div *ngIf="isLoggedIn">
+                    <div class="user-dropdown-text">
+                        <p>Hello there {{currentUser.firstName}}!</p>
+                    </div>
+                    <button class="button button-standard"
+                            (click)="logout()">
+                        Log out
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+[
+    {
+        "id": "0",
+        "type": "news",
+        "title": "Holy Moley! Andrew Luck kills 12 people with dodgeball",
+        "date_posted": "Dec 12 2019",
+        "date_edited": "Dec 29 2019",
+        "body": "assets/articles/test-article.md",
+        "author": 0,
+        "images": ["assets/images/testfeatured.jpg"],
+        "feedback": null,
+        "comments": null
+    },
+    {
+        "id": "1",
+        "type": "promo",
+        "title": "Event down 'ere at the ol' water 'ole!",
+        "date_posted": "Jan 22 2020",
+        "date_edited": "Jan 22 2020",
+        "body": "assets/articles/test-article.md",
+        "author": "",
+        "images": ["assets/images/testpromo.jpg"],
+        "feedback": null,
+        "comments": null
+    }
+]

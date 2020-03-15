@@ -1,0 +1,14 @@
+<div #messageContainer [@showHide]="stateName" 
+     class="message-container text-center"
+     (@showHide.done)="deleteMessage()">
+
+    <div class="message">
+        <p class="text">
+            {{ message.message }}
+        </p>
+        <button class="button button-standard button-sm"
+                (click)=remove()>
+            X
+        </button>
+    </div>
+</div>

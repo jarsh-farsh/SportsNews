@@ -1,0 +1,18 @@
+[
+    {
+        "id": "0",
+        "username": "TestAuthorBoo",
+        "email": "testauthorboo@email.com",
+        "password": "password",
+        "userType": 1,
+        "date_created": "Dec 1 2019"
+    },
+    {
+        "id": "1",
+        "username": "TestAuthorJeff",
+        "email": "testauthorjeff@email.com",
+        "password": "password",
+        "userType": 1,
+        "date_created": "Nov 13 2019"
+    }
+]

@@ -1,0 +1,51 @@
+<!-- Featured article -->
+<div *ngIf="articles">
+
+    <div class="article-featured-container">
+        <a [routerLink]="['articles/a/', articles[0].id]" class="featured-article">
+            <h1 class="article-featured-heading-tag box-shadow heading h-3">Featured</h1>
+            <img [src]="articles[0].images[0]">
+
+            <div class="article-featured-caption-container box-shadow">
+                <h1 class="article-featured-caption-heading heading h-1 base-transition">
+                    {{articles[0].title}}
+                </h1>
+                <div class="article-featured-caption">
+                    By: <a href="##">{{articles[0].user.firstName}} {{articles[0].user.lastName}}</a>
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+    <!-- Non-featured articles -->
+    <div class="article-normal-base-container">
+
+
+        <!-- Articles -->
+        <h1 class="article-normal-section-heading">Stuff is happening</h1>
+        <div class="article-normal-section">
+
+            <div *ngFor="let article of articles.slice(1, articles.length)">
+                
+                <a [routerLink]="['articles/a/', article.id]" class="article-normal-container base-transition">
+
+                    <div class="article-normal-image-container">
+                        <img [src]="article.images[0]">
+                    </div>
+                    <div class="article-normal-caption-container">
+                        <h1 class="article-normal-heading heading h-3 base-transition">{{article.title}}</h1>
+                        <div class="article-normal-caption">By: <a href="##">{{article.user.firstName}} {{article.user.lastName}}</a></div>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <a [routerLink]="['/articles']" class="standard-link base-transition" href="#">See more</a>
+        </div>
+
+
+
+    </div>
+</div>

@@ -1,0 +1,101 @@
+
+.article-heading{
+    padding: 0 10px;
+}
+
+.article-title{
+    font-size:64px;
+}
+
+.article-details{
+    display:flex;
+    align-items: center;
+    font-size: 16px;
+    padding-left:5px;
+    color:gray;
+}
+.author-avatar{
+    width:75px;
+    height:75px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+.details{
+    margin-left: 5px;
+}
+.details div{
+    padding: 2px 0;
+}
+
+.article{
+    font-family: 'IBM Plex Sans', cursive !important;
+    padding:0 25px;
+}
+.article img{
+    width:100%;
+    height:auto;
+    margin-bottom:25px;
+}
+
+.comments-container{
+    border-top:1px solid gainsboro;
+}
+
+.comments-details-section{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 30px;
+    font-size:22px;
+}
+
+.feedback-section{
+    position: relative;
+    display:flex;
+    border-bottom:4px solid gainsboro;
+}
+
+.feedback-bar{
+    position: absolute;
+    padding-top:4px;
+    border-bottom:4px solid deepskyblue;
+    width:0px;
+    bottom:-4px;
+}
+
+.feedback-section button{
+    padding:5px;
+    width:80px;
+    color:gray;
+    outline:none;
+}
+.likes-section button i{
+    float:right;
+}
+
+.dislikes-section button i{
+    float:right;
+}
+
+.likes-section .selected{
+    color:deepskyblue;
+}
+.dislikes-section .selected{
+    color:deepskyblue;
+}
+
+.comments{
+    border-top:1px solid gainsboro;
+    padding:40px 20px 0 20px;
+}
+
+.comments-show-more{
+    text-align: center;
+    margin-top:40px;
+}
+
+@media only screen and (max-width:720px){
+    .article-title{
+        font-size:48px;
+    }
+}

@@ -1,0 +1,91 @@
+
+<div class="comment box-shadow"
+    @commentAppear >
+
+    <div class="comment-heading">
+
+            <div class="comment-feedback">
+
+                <div class="comment-feedback-like">
+                    <button [ngClass]="{ 'base-transition': true, 'selected': hasUserVoted(comment.feedback, 'up') }"
+                        (click)="addFeedback(comment.feedback, 'up')" [disabled]="!isLoggedIn"
+                        title="{{isLoggedIn ? 'Up vote' : 'Log in to vote'}}">
+                        <i class="fa fa-arrow-circle-up"></i>
+                        {{comment.feedback.likes | feedback }}
+                    </button>
+                </div>
+
+                <div class="comment-feedback-dislike">
+                    <button [ngClass]="{ 'base-transition': true, 'selected': hasUserVoted(comment.feedback, 'down') }"
+                        (click)="addFeedback(comment.feedback, 'down')" [disabled]="!isLoggedIn"
+                        title="{{isLoggedIn ? 'Down vote' : 'Log in to vote'}}">
+                        <i class="fa fa-arrow-circle-down"></i>
+                        {{comment.feedback.dislikes | feedback }}
+                    </button>
+                </div>
+
+            </div>
+
+
+
+        <strong>{{comment.user.email}}</strong>
+        {{comment.dateCreated | date}}
+
+    </div>
+
+    
+    <div style="display:flex; justify-content: space-between; align-items: center;">
+
+        <div class="comment-body">
+            {{comment.body}}
+        </div>
+
+        <div class="reply">
+
+            <button class="button button-standard button-sm base-transition"
+                    [disabled]="!isLoggedIn"
+                    (click)="reply()">
+                Reply
+            </button>
+
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="replying">
+    
+    <app-comment-input user="currentUser" isReply="true" (cancelReply)="reply()"></app-comment-input>
+
+</div>
+
+<div *ngIf="comment.commentCount > 0">
+    <div *ngIf="!showComments">
+        <button class="button button-standard base-transition"
+                (click)="getReplies()"
+                [disabled]="loadingReplies">
+                <i class="fa fa-arrow-right"></i> 
+                See {{comment.commentCount}} replies
+        </button>
+        <span *ngIf="loadingReplies" class="spinner-border" role="status"></span>
+    </div>
+
+
+    <div *ngIf="showComments">
+        <button class="button button-standard base-transition"
+                (click)="getReplies()">
+                <i class="fa fa-arrow-down"></i> 
+                Hide replies
+        </button>
+
+        <div style="margin-left: 20px">
+            <div *ngFor="let reply of comment.comments">
+                <app-comment (feedbackChange)="addFeedback($event.feedback, $event.vote)"
+                             [votes] = "votes"
+                             [mainComment]="mainComment ? mainComment : comment" 
+                             [comment]="reply"></app-comment>
+            </div>
+        </div>
+
+    </div>
+</div>

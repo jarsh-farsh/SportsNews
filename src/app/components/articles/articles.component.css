@@ -1,0 +1,115 @@
+
+a{
+    text-decoration: none;
+}
+
+.articles-page{
+    margin: 80px auto;
+}
+
+/* Featured article */
+
+.featured-article-container{
+    display:block;
+    max-width:1000px;
+    border:1px solid gainsboro;
+    border-top:2px solid gainsboro;
+    border-bottom:4px solid gainsboro;
+    border-radius: 5px;
+    margin: auto;
+}
+.featured-article-image{
+    display:block;
+    width:100%;
+    height:auto;
+}
+.featured-article-image img{
+    width:inherit;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.featured-article-caption-container{
+    border-top:3px solid gainsboro;
+    padding:0 15px;
+}
+.featured-article-type{
+    padding-top:10px;
+    color:lightgrey;
+}
+.featured-article-title{
+    padding-top:10px;
+    border-bottom:1px solid gainsboro;
+    font-size:26px;
+    color:black;
+}
+.featured-article-author{
+    padding:10px 0;
+    color:black;
+}
+
+.featured-article-container:hover .featured-article-title{
+    color:deepskyblue;
+}
+
+/* Normal article */
+
+.normal-articles{
+    display: block;
+    text-align: center;
+    width:100%;
+}
+
+.normal-article-container{
+    display:inline-block;
+    text-align: left;
+    width:360px;
+    border:1px solid gainsboro;
+    border-radius: 5px;
+    margin: 5px;
+}
+.normal-article-image{
+    display:block;
+    width:100%;
+    height:auto;
+}
+.normal-article-image img{
+    width:inherit;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.normal-article-caption-container{
+    border-top:2px solid gainsboro;
+    border-bottom:2px solid gainsboro;
+    padding:0 10px;
+}
+.normal-article-type{
+    color:lightgrey;
+    padding-top: 10px;
+}
+.normal-article-title{
+
+    border-bottom:1px solid gainsboro;
+    color:black;
+    font-size:22px;
+}
+.normal-article-author{
+    padding: 5px 0;
+    color:black;
+    font-size:16px;
+}
+.normal-article-container:hover .normal-article-title{
+    color:deepskyblue;
+}
+
+/* Reactive */
+
+@media only screen and (max-width:800px){
+    .normal-article-container{
+        display:block;
+        width:100%;
+        margin:5px 0;
+    }
+    .normal-article-image{
+        display:none;
+    }
+}

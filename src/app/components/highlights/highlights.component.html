@@ -1,0 +1,37 @@
+<div id="selectedVideo" class="page-container">
+
+    <div class="page">
+        <div class="page-heading-container">
+            <h1 class="page-heading h-1">Highlights</h1>
+        </div>
+        <div *ngIf="videos">
+            <div *ngIf="videoSelected" class="highlights-selected-video">
+                <iframe [src]="getVideoUrl(videoSelected) | safeUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="highlights-video-playlist"> 
+                <ul class="video">
+                    <div class="vid" *ngFor="let video of videos; let i = index">
+                    
+                        <li [ngClass]="{ 'base-transition': true, 'selected': isVideoSelected(video)}"
+                            (click)="selectVideo(video)"
+                            title="{{video.snippet.title}}">
+                            <i class="video-icon fab fa-youtube base-transition"></i>
+                            <img [src]="video.snippet.thumbnails.medium.url">
+                            <div class="video-title">
+                                {{video.snippet.title}}
+                            </div>
+                        </li>
+                    
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <button class="standard-link base-transition" (click)="getMoreVideos()"
+            [disabled]="obtainedAllVideos || loadingVideos">See More</button>
+    </div>
+
+</div>

@@ -1,0 +1,119 @@
+.league-container{
+
+    background:gainsboro;
+    width:100%;
+}
+
+.league-section{        
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+    padding:100px 20px;
+    max-width: 1400px;
+    width:100%;
+}
+
+.league-info-image-container-left, .league-info-image-container-right{
+    width:25%;
+}
+
+.league-info-image-left, .league-info-image-right{
+    display:flex;
+    align-items: center;
+    width:100%;
+    height:100%;
+    padding:20px;
+}
+
+.league-info-image-right img, .league-info-image-left img{
+    width:100%;
+    max-width: 540px;
+    height:auto;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+.league-info-image-right img{
+    transform: scaleX(-1);
+}
+
+.league-info-section{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:50%;
+    padding:25px 0;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+.league-info-heading{
+    text-align: center;
+    font-size: 64px;
+}
+
+.league-info-text{
+    font-size:28px;
+}
+
+.league-info-link{
+    text-align: center;
+    width:100%;
+    margin-top:25px;
+    font-size: 22px;
+}
+
+.league-info-link a{
+    width:400px;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:1200px){
+    .league-info-heading{
+        font-size:48px;
+    }
+    .league-info-text{
+        font-size:20px;
+    }
+}
+
+@media only screen and (max-width:950px){
+    .league-info-heading{
+        padding:25px;
+    }
+    .league-info-text{
+        padding:25px;
+    }
+    .league-info-image-container-left{
+        position: absolute;  
+        width:150px;  
+        top:20px;
+        left:60px;
+    }
+    .league-info-image-container-right{
+        position: absolute;
+        width:150px;
+        top:20px;
+        right:80px;
+    }
+    .league-info-image-left img{
+        transform: rotate(15deg);
+        width:125px;
+        height:auto;       
+    }
+    .league-info-image-right img{
+        transform: scaleX(-1) rotate(15deg);
+        width:125px;
+        height:auto;       
+    }
+    .league-section{     
+        display:block;
+        padding:120px 20px 60px 20px;
+        position: relative;
+    }
+    .league-info-section{
+        width:100%;
+    }
+    .league-info-link a{
+        width:100%;
+    }
+}

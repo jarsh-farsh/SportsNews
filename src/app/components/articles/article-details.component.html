@@ -1,0 +1,123 @@
+
+<div class="page-container">
+    <div class="page">
+
+        <div *ngIf="!loadingArticle">
+
+        <!-- Article Heading -->
+            <div class="article-heading">
+                <h1 class="article-title">{{article.title}}</h1>
+                <div class="article-details">
+                    <img class="author-avatar" src="assets/images/avatar-icon.jpg">
+                    <div class="details">
+                        <div class="article-author">By: <a href="#">{{article.user.firstName}} {{article.user.lastName}}</a></div>
+                        <div class="article-date">Posted on {{article.datePosted | date }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="horizontal-ad-space"></div>
+
+            <!-- Article Body and Comments Section -->
+            <div class="article-container">
+
+                <div class="article">
+                    <img [src]="article.images[0]">
+                    <ngx-md path="assets/articles/{{article.body}}"></ngx-md>
+                </div>
+
+                <!-- Comments -->
+                <div class="comments-container">
+                    <div class="comments-details-section">
+                        <div class="comment-count">
+                            {{article.commentCount}} Comments
+                        </div>
+                        <div class="feedback-section">
+                            <div class="feedback-bar base-transition" [style.width.px]="feedbackBarWidth"></div>
+
+                            <div class="likes-section base-transition">
+                                <button [ngClass]="{ 'base-transition': true, 'selected': hasUserVoted(article.feedback, 'up') }" 
+                                        (click)="addFeedback(article.feedback, 'up')" 
+                                        [disabled]="!isLoggedIn"
+                                        title="{{isLoggedIn ? 'I Like this post' : 'Log in to vote'}}">
+                                    {{article.feedback.likes | feedback }}
+                                    <i class="fa fa-thumbs-up"></i>
+                                </button>
+                            </div>
+                            <div class="dislikes-section">
+                                <button [ngClass]="{ 'base-transition': true, 'selected': hasUserVoted(article.feedback, 'down') }" 
+                                        (click)="addFeedback(article.feedback, 'down')" 
+                                        [disabled]="!isLoggedIn"
+                                        title="{{isLoggedIn ? 'I don\'t like this post' : 'Log in to vote'}}">
+                                    {{article.feedback.dislikes | feedback }}
+                                    <i class="fa fa-thumbs-up fa-rotate-180"></i>
+                                </button>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="comments-section">
+
+                        <div class="comment-input">
+                            <div *ngIf="isLoggedIn">
+
+                                <app-comment-input [user]="currentUser"></app-comment-input>
+
+                            </div>
+
+                            <div *ngIf="!isLoggedIn" class="text-center p-5 m-3 box-shadow">
+                                If you would like to comment, please <a href=#>log in</a> or <a href=#>sign up</a>.
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="!loadingComments" class="comments">
+
+                            <div *ngFor="let comment of article.comments">
+
+                                <app-comment (feedbackChange)="addFeedback($event.feedback, $event.vote)" 
+                                             [comment]="comment"
+                                             [votes]="userVotes"></app-comment>
+
+                            </div>
+
+                            <div class="comments-show-more">
+                                <button 
+                                    class="button button-standard base-transition align-items-center"
+                                    [disabled]="article.comments?.length === article.commentCount || loadingMoreComments">
+                                    <span>Show more </span>
+                                </button>
+                                <span *ngIf="loadingMoreComments" class="spinner-border" role="status"></span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="loadingComments">
+                            <div class="d-flex justify-content-center align-items-center" style="height:150px">
+                                <div class="spinner-border" style="width:3rem; height: 3rem" role="status">
+                
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="horizontal-ad-space"></div>
+
+        </div>
+
+        <div *ngIf="loadingArticle">
+            <div class="d-flex justify-content-center align-items-center" style="height:600px">
+                <div class="spinner-border" style="width:5rem; height: 5rem" role="status">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

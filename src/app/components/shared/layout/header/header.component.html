@@ -1,0 +1,68 @@
+
+<!-- Top Navigation -->
+<div class="nav-top-container">
+
+    <div class="nav-top base-color">
+
+        <div class="d-flex flex-row justify-content-between">
+
+            <!-- Side nav toggle and Brand -->
+            <div class="d-flex">
+
+                <!-- Side nav toggle -->
+                <button class="menu-toggle" (click)=toggleSideNav()>
+                    <i class="fa fa-bars" style="font-size:22px"></i>
+                    <div class="circle-background base-transition"></div>
+                </button>
+
+                <!-- Brand -->
+                <a [routerLink]="['']" class="brand" href="#">Brand</a>
+            </div>
+
+            <!-- Contact and User buttons -->
+            <div class="contact-container">
+                <div class="contact d-flex">
+                    <!-- Contact button -->
+                    <button (click)="toggleContact()" class="btn contact-button">Contact<i class="fa fa-envelope" style="margin:5px 5px 0 5px"></i></button>
+
+                    <!-- User dropdown -->
+                    <div class="dropdown show">
+                        <button class="btn user-button base-transition" (click)="toggleUserDropDown()" [disabled]="closingUserDropDown">
+                            <div *ngIf="!showUserDropDown">
+                                <i class="fa fa-user" style="margin-top:4px; margin-left:1px" title="Open User Window"></i>
+                            </div>
+                            <div *ngIf="showUserDropDown">
+                                <i class="fa fa-times" style="margin-top:8px; width:15px; height:12px;" title="Close User Window"></i>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="showUserDropDown">
+        <app-user-dropdown [closing]="closingUserDropDown" (showUserDropDownChange)="userDropDownClosed()"></app-user-dropdown>
+    </div>
+
+    <div *ngFor="let message of globalMessages">
+        <global-message [message]="message"></global-message>
+    </div>
+
+</div>
+
+
+
+<!-- Side Navigation -->
+<div *ngIf="showSideNav">
+    <side-nav></side-nav>
+</div>
+
+<div *ngIf="showContact">
+    <app-contact (contactClosed)="toggleContact()"></app-contact>
+</div>
+
+<div class="nav-buffer"></div>

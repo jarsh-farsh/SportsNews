@@ -1,0 +1,59 @@
+<div @openCloseWindow *ngIf="isOpen" 
+     (@openCloseWindow.done)="windowClosed($event)"
+     class="newsletter-container">
+    
+    <div class="dialog-close">
+        <button class="button dialog-close-btn base-transition" 
+                title="Close Window"
+                (click)="close()">X</button>
+    </div>
+
+    <h1 class="heading h-1">Newsletter</h1>
+
+    <div class="newsletter-signup">
+
+        <div class="text-center" style="padding:20px 10px 30px 10px">
+            Sign up below with your e-mail address to be updated on all of our activity!
+        </div>
+
+        <div>
+
+            <form [formGroup]="newsletterForm" style="padding:0 15px">
+
+                <div class="input">    
+                        <!-- Email input -->
+                        <input appInput type="text" formControlName="email" 
+                            (onValueChanged)="emailFocus = $event" 
+                            [ngClass]="{'invalid-input': !newsletterForm.get('email').valid && newsletterForm.get('email').touched}">
+                        <label [ngClass]="{'input-label' : true, 'base-transition': true, 'text-written': newsletterForm.get('email').value !== '' || emailFocus }">Email</label>
+
+                        <!-- Email validation messages -->
+                        <div class="validation-messages">
+                            <div *ngIf="!newsletterForm.get('email').valid && newsletterForm.get('email').touched">
+                                <div *ngIf="newsletterForm.get('email').errors.required">
+                                    Email is required
+                                </div>
+                                <div *ngIf="newsletterForm.get('email').errors.pattern">
+                                    Email address is not correct a correct format.
+                                </div>
+                            </div>
+                            <div *ngIf="emailDuplicate">
+                                This email is already signed up.
+                            </div>
+                        </div>
+
+                </div>
+
+            </form>
+
+            <div style="width:100%; text-align: right; padding:10px 25px;">
+                <button class="button button-standard" 
+                        (click)="submitEmail()" 
+                        [disabled]="!newsletterForm.valid">Submit</button>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
